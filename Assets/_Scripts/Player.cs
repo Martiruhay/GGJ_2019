@@ -11,12 +11,30 @@ public class Player : MonoBehaviour
     public float jumpSpeed;
     public int maxJumps;
     public LayerMask groundMask;
-    public Transform rayStart, rayEnd;
+
+    [Header("Shooting")]
+    public float bulletSpeed;
+    public float bulletRefillTime;
+    public int maxBulletAmmo;
+    public int bulletAmmo;
+    public float bombSpeed;
+    public float bombRefillTime;
+    public int maxBombAmmo;
+    public int bombAmmo;
+
+    [Header("References")]
+    public Transform rayEnd;
+    public Transform aimer;
+    public Transform bulletSpawn;
+
+    [Header("Prefabs")]
+    public GameObject bulletPrefab;
+    public GameObject bombPrefab;
 
     // Private
     Rigidbody2D rb;
     private float horizontal;
-    private bool jump, shoot1, shoot2;
+    private bool jump, fire1, fire2;
     private int nJumps;
     public bool grounded;
 
@@ -28,6 +46,9 @@ public class Player : MonoBehaviour
     private void Start()
     {
         nJumps = maxJumps;
+        bulletAmmo = maxBulletAmmo;
+        StartCoroutine(BulletRefill());
+        StartCoroutine(BombRefill());
     }
 
     private void Update()
@@ -35,6 +56,7 @@ public class Player : MonoBehaviour
         HandleInput();
         CheckFloor();
         HandleMovement();
+        HandleShoot();
     }
 
     private void HandleMovement()
@@ -53,11 +75,13 @@ public class Player : MonoBehaviour
     {
         horizontal = Input.GetAxis("Horizontal");
         jump = Input.GetButtonDown("Jump");
+        fire1 = Input.GetButtonDown("Fire1");
+        fire2 = Input.GetButtonDown("Fire2");
     }
 
     private void CheckFloor()
     {
-        RaycastHit2D hit = Physics2D.Linecast(rayStart.position, rayEnd.position, groundMask);
+        RaycastHit2D hit = Physics2D.Linecast(transform.position, rayEnd.position, groundMask);
 
         // If it hits something...
         if (hit.collider != null)
@@ -77,5 +101,52 @@ public class Player : MonoBehaviour
     private void HandleLanding()
     {
         nJumps = maxJumps;
+    }
+
+    private void HandleShoot()
+    {
+        // Bullet
+        if (fire1 && bulletAmmo > 0)
+        {
+            // SHOOT
+            --bulletAmmo;
+            Vector3 dir = aimer.up;
+            GameObject g = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
+            Bullet b = g.GetComponent<Bullet>();
+            b.id = playerNum;
+            b.rb.velocity = bulletSpeed * dir;
+        }
+
+        // Bomb
+        if (fire2 && bombAmmo > 0)
+        {
+            // SHOOT
+            --bombAmmo;
+            Vector3 dir = aimer.up;
+            GameObject g = Instantiate(bombPrefab, bulletSpawn.position, Quaternion.identity);
+            Bomb b = g.GetComponent<Bomb>();
+            b.id = playerNum;
+            b.rb.velocity = bombSpeed * dir;
+        }
+    }
+
+    private IEnumerator BulletRefill()
+    {
+        while (true)
+        {
+            if (bulletAmmo < maxBulletAmmo)
+                ++bulletAmmo;
+            yield return new WaitForSeconds(bulletRefillTime);
+        }
+    }
+
+    private IEnumerator BombRefill()
+    {
+        while (true)
+        {
+            if (bombAmmo < maxBombAmmo)
+                ++bombAmmo;
+            yield return new WaitForSeconds(bombRefillTime);
+        }
     }
 }
