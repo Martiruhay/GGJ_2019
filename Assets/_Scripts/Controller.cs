@@ -10,6 +10,7 @@ public class Controller : MonoBehaviour
     public float bulletStunDuration, bombStunDuration;
     public float aimerSpeed;
     public float endGameTime;
+    public int homeMaxHp;
 
     [Header("References")]
     public GameObject endGameObject;
@@ -20,6 +21,7 @@ public class Controller : MonoBehaviour
         Player.controller = this;
         Home.controller = this;
         Aimer.controller = this;
+        Home.controller = this;
     }
 
     private void Start()

@@ -7,12 +7,11 @@ public class Home : MonoBehaviour
     public static Controller controller;
 
     public int id;
-    public float maxHp;
     public float hp;
 
     private void Start()
     {
-        hp = maxHp;
+        hp = controller.homeMaxHp;
     }
 
     public void HitBullet()

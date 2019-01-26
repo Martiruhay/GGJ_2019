@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     public bool grounded;
     private bool stuned;
     private float stunTimer;
+    private bool canShoot = true;
 
     private void Awake()
     {
@@ -147,7 +148,7 @@ public class Player : MonoBehaviour
     private void HandleShoot()
     {
         // Bullet
-        if (fire1 && bulletAmmo > 0)
+        if (fire1 && bulletAmmo > 0 && canShoot)
         {
             // SHOOT
             --bulletAmmo;
@@ -164,7 +165,7 @@ public class Player : MonoBehaviour
         }
 
         // Bomb
-        if (fire2 && bombAmmo > 0)
+        if (fire2 && bombAmmo > 0 && canShoot)
         {
             // SHOOT
             --bombAmmo;
@@ -252,5 +253,21 @@ public class Player : MonoBehaviour
     public void HitBomb()
     {
         stunTimer += controller.bombStunDuration;
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Fence"))
+        {
+            canShoot = false;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.CompareTag("Fence"))
+        {
+            canShoot = true;
+        }
     }
 }
