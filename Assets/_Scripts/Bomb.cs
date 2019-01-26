@@ -13,6 +13,7 @@ public class Bomb : MonoBehaviour
 
     private Collider2D col;
     private Color myColor;
+    private Material mat;
 
     private void Start()
     {
@@ -25,6 +26,14 @@ public class Bomb : MonoBehaviour
     {
         myColor = c;
         GetComponent<SpriteRenderer>().color = myColor;
+        mat = GetComponent<SpriteRenderer>().material;
+        if (mat == null)
+        {
+            Debug.Log("lkdjkhjadn");
+        }
+        mat.SetColor("_ColorOutline", myColor);
+        mat.SetColor("_Color", myColor);
+
     }
 
     public void Shoot(Vector3 newVel)

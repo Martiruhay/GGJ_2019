@@ -10,6 +10,9 @@ public class Bullet : MonoBehaviour
     public Rigidbody2D rb;
     public GameObject splashParticles;
 
+    private Color myColor;
+    private Material mat;
+
     void Start()
     {
         Destroy(gameObject, lifetime);
@@ -22,7 +25,15 @@ public class Bullet : MonoBehaviour
 
     public void SetColor(Color c)
     {
-        GetComponent<SpriteRenderer>().color = c;
+        myColor = c;
+        GetComponent<SpriteRenderer>().color = myColor;
+        mat = GetComponent<SpriteRenderer>().material;
+        if (mat == null)
+        {
+            Debug.Log("lkdjkhjadn");
+        }
+        mat.SetColor("_ColorOutline", myColor);
+        mat.SetColor("_Color", myColor);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -49,6 +60,8 @@ public class Bullet : MonoBehaviour
         // Bullet hit sound
         // Particles
         GameObject g = Instantiate(splashParticles, transform.position, Quaternion.identity);
+        ParticleSystem.MainModule settings = g.GetComponent<ParticleSystem>().main;
+        settings.startColor = myColor;
         g.transform.up = -rb.velocity.normalized;
 
         Destroy(gameObject);

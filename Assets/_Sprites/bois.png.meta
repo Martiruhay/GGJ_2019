@@ -304,10 +304,10 @@ TextureImporter:
       name: balloon
       rect:
         serializedVersion: 2
-        x: 1366
-        y: 1284
+        x: 1491
+        y: 1039
         width: 355
-        height: 475
+        height: 488
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -324,10 +324,10 @@ TextureImporter:
       name: bullet
       rect:
         serializedVersion: 2
-        x: 1730
-        y: 1596
-        width: 157
-        height: 163
+        x: 1719
+        y: 1585
+        width: 182
+        height: 186
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -409,7 +409,7 @@ TextureImporter:
         width: 119
         height: 93
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

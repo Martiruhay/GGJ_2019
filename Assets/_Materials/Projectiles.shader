@@ -3,8 +3,8 @@
 	Properties
 	{
 		_MainTex("Texture", 2D) = "white" {}
-		_Color("Main color", Color) = (1,1,1,1)
-		_ColorOutline("Outline color", Color) = (1,1,1,1)
+		[PerRendererData]_Color("Main color", Color) = (1,1,1,1)
+		[PerRendererData]_ColorOutline("Outline color", Color) = (1,1,1,1)
 		_ColorHit("Hit Color", Color) = (1,1,1,1)
 		_Width("Outline Width", Range(0,0.05)) = 0.003
 		_Alpha("General Alpha",  Range (0,1)) = 1
