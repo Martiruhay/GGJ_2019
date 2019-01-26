@@ -73,10 +73,10 @@ public class Player : MonoBehaviour
 
     private void HandleInput()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        jump = Input.GetButtonDown("Jump");
-        fire1 = Input.GetButtonDown("Fire1");
-        fire2 = Input.GetButtonDown("Fire2");
+        horizontal = Input.GetAxis("Horizontal_P" + playerNum);
+        jump = Input.GetButtonDown("Jump_P" + playerNum);
+        fire1 = Input.GetButtonDown("Fire1_P" + playerNum);
+        fire2 = Input.GetButtonDown("Fire2_P" + playerNum);
     }
 
     private void CheckFloor()
