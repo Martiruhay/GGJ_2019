@@ -97,7 +97,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.5
+  m_GravityScale: 0.3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -134,3 +134,5 @@ MonoBehaviour:
   id: 0
   lifetime: 5
   rb: {fileID: 3011049845530247906}
+  splashParticles: {fileID: 7644126987202187844, guid: d3e73365950397b42b730f1c1bc89b30,
+    type: 3}

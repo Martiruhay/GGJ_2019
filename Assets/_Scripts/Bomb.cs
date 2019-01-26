@@ -8,6 +8,7 @@ public class Bomb : MonoBehaviour
     public float lifetime;
 
     public Rigidbody2D rb;
+    public GameObject splashParticles;
 
     void Start()
     {
@@ -19,19 +20,14 @@ public class Bomb : MonoBehaviour
 
     }
 
-    private void HitBomb()
-    {
-        Debug.Log("Hit bullet!");
-    }
-
-    private void HitBullet()
-    {
-        Debug.Log("Hit bullet!");
-    }
 
     private void Explode()
     {
         Debug.Log("BOUM!");
+
+        // Particles
+        GameObject g = Instantiate(splashParticles, transform.position, Quaternion.identity);
+
         Destroy(gameObject);
     }
 
@@ -40,15 +36,23 @@ public class Bomb : MonoBehaviour
         Debug.Log("Trigger enter: " + collision.gameObject.name);
         if (collision.CompareTag("Bullet"))
         {
-            HitBullet();
+            Bullet b = collision.GetComponent<Bullet>();
+            if (b.id != id)
+            {
+                Explode();
+            }
         }
         else if (collision.CompareTag("Bomb"))
         {
-            HitBomb();
+            Bomb b = collision.GetComponent<Bomb>();
+            if (b.id != id)
+            {
+                Explode();
+            }
         }
         else
         {
+            Explode();
         }
-        Explode();
     }
 }

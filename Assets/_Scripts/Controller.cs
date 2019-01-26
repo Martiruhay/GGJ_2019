@@ -4,13 +4,8 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    void Start()
+    private void Awake()
     {
-        
-    }
-
-    void Update()
-    {
-        
+        Player.controller = this;
     }
 }
