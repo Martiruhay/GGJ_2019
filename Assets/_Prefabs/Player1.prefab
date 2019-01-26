@@ -15199,7 +15199,7 @@ MonoBehaviour:
   playerNum: 2
   myColor: {r: 0.38823533, g: 0.47450984, b: 0.73333335, a: 1}
   moveSpeed: 30
-  jumpSpeed: 50
+  jumpSpeed: 40
   maxJumps: 2
   groundMask:
     serializedVersion: 2
@@ -15273,7 +15273,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5733894139880993864}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
