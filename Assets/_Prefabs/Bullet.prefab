@@ -134,3 +134,5 @@ MonoBehaviour:
   id: 0
   lifetime: 5
   rb: {fileID: 826431366279634299}
+  splashParticles: {fileID: 7644126987202187844, guid: 4d72caf6dbac5c44cb3da6d309a953cd,
+    type: 3}

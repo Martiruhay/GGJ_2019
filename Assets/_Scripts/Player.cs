@@ -149,4 +149,9 @@ public class Player : MonoBehaviour
             yield return new WaitForSeconds(bombRefillTime);
         }
     }
+
+    public void Hit()
+    {
+
+    }
 }
