@@ -71,6 +71,7 @@ public class Bomb : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        
         Debug.Log("Trigger enter: " + collision.gameObject.name);
         if (collision.CompareTag("Bullet"))
         {

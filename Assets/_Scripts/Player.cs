@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
 
     [Header("References")]
     public Transform rayEnd;
-    public Transform aimer;
+    public Aimer aimer;
     public Transform bulletSpawn;
     public Transform bombSpawn;
     public Animator animAttack, animMove, gunAnim;
@@ -65,6 +65,8 @@ public class Player : MonoBehaviour
 
         StartCoroutine(BulletRefill());
         StartCoroutine(BombRefill());
+        StartCoroutine(Stun());
+        StartCoroutine(WalkingParticles());
     }
 
     private void Update()
@@ -86,13 +88,14 @@ public class Player : MonoBehaviour
     private void HandleMovement()
     {
         Vector2 vel = rb.velocity;
-        vel.x = horizontal * moveSpeed;
+        if (!stuned)
+            vel.x = horizontal * moveSpeed;
 
         // Jump
-        if (jump && nJumps > 0)
+        if (jump && nJumps > 0 && !stuned)
         {
+            vel.y = nJumps == maxJumps ? jumpSpeed : jumpSpeed - jumpSpeed / 4;
             --nJumps;
-            vel.y = jumpSpeed;
             // Play jump sound
             AudioManager.instance.Play("jump_boi");
 
@@ -105,7 +108,7 @@ public class Player : MonoBehaviour
             //We apply more force downwards to fall faster
             rb.velocity -= Vector2.down * Physics2D.gravity.y * fallMult * Time.deltaTime;
         }
-        else if (rb.velocity.y > 0 && !Input.GetButton("Jump_P" + playerNum.ToString())) //If we are going up and not pressing the jump button
+        else if (rb.velocity.y > 0 && (stuned || !Input.GetButton("Jump_P" + playerNum))) //If we are going up and not pressing the jump button
         {
             //We apply more force downwards to fall faster
             rb.velocity -= Vector2.down * Physics2D.gravity.y * lowJumpMult * Time.deltaTime;
@@ -150,7 +153,7 @@ public class Player : MonoBehaviour
             --bulletAmmo;
             // Bullet shoot sound
             AudioManager.instance.Play("bullet_shoot");
-            Vector3 dir = aimer.up;
+            Vector3 dir = aimer.transform.up;
             GameObject g = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
             Bullet b = g.GetComponent<Bullet>();
             b.SetColor(myColor);
@@ -167,7 +170,7 @@ public class Player : MonoBehaviour
             --bombAmmo;
             // Bomb shoot sound
             AudioManager.instance.Play("throw_bomb");
-            Vector3 dir = aimer.up;
+            Vector3 dir = aimer.transform.up;
             GameObject g = Instantiate(bombPrefab, bombSpawn.position, Quaternion.identity);
             g.transform.parent = bombSpawn;
             Bomb b = g.GetComponent<Bomb>();
@@ -195,7 +198,7 @@ public class Player : MonoBehaviour
             while (bulletAmmo >= maxBulletAmmo)
                 yield return null;
             yield return new WaitForSeconds(bulletRefillTime);
-                ++bulletAmmo;
+            ++bulletAmmo;
         }
     }
 
@@ -215,16 +218,29 @@ public class Player : MonoBehaviour
         while (true)
         {
             stuned = false;
-            stunTimer = 0;
             stunObject.SetActive(false);
+            aimer.speed = controller.aimerSpeed;
             while (stunTimer > 0)
             {   // STUNED
                 stuned = true;
                 stunTimer -= Time.deltaTime;
                 stunObject.SetActive(true);
+                aimer.speed = 0;
                 yield return null;
             }
+            stunTimer = Mathf.Max(0, stunTimer);
             yield return null;
+        }
+    }
+
+    private IEnumerator WalkingParticles()
+    {
+        while (true)
+        {
+            while (!grounded || Mathf.Abs(rb.velocity.x) < .2f)
+                yield return null;
+            landPS.Emit(2);
+            yield return new WaitForSeconds(.2f);
         }
     }
 

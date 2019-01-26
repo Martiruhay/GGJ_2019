@@ -6,11 +6,13 @@ public class Controller : MonoBehaviour
 {
     public float bulletDamage, bombDamage;
     public float bulletStunDuration, bombStunDuration;
+    public float aimerSpeed;
 
     private void Awake()
     {
         Player.controller = this;
         Home.controller = this;
+        Aimer.controller = this;
     }
 
     private void Start()

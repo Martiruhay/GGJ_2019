@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Aimer : MonoBehaviour
 {
+    public static Controller controller;
+
     public float speed;
     public float minAngle, maxAngle;
 
@@ -21,7 +23,8 @@ public class Aimer : MonoBehaviour
 
     void Start()
     {
-        t = minAngle;
+        speed = controller.aimerSpeed;
+        t = Random.Range(minAngle, maxAngle);
     }
 
     void Update()
