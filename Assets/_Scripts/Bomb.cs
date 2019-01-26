@@ -24,6 +24,7 @@ public class Bomb : MonoBehaviour
     private void Explode()
     {
         Debug.Log("BOUM!");
+        // Bomb explosion sound
 
         // Particles
         GameObject g = Instantiate(splashParticles, transform.position, Quaternion.identity);
@@ -47,6 +48,23 @@ public class Bomb : MonoBehaviour
             Bomb b = collision.GetComponent<Bomb>();
             if (b.id != id)
             {
+                Explode();
+            }
+        }
+        else if (collision.CompareTag("Home"))
+        {
+            Home b = collision.GetComponent<Home>();
+            if (b.id != id)
+            {
+                Explode();
+            }
+        }
+        else if (collision.CompareTag("Player"))
+        {
+            Player p = gameObject.GetComponent<Player>();
+            if (p.playerNum != id)
+            {
+                p.HitBomb();
                 Explode();
             }
         }

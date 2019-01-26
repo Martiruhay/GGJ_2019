@@ -27,14 +27,22 @@ public class Bullet : MonoBehaviour
         {
             HitBullet();
         }
-        if (collision.CompareTag("Player"))
+        else if (collision.CompareTag("Player"))
         {
             Player p = collision.GetComponent<Player>();
             if (p.playerNum != id)
-                p.Hit();
+                p.HitBullet();
         }
+        else if (collision.CompareTag("Home"))
+        {
+            Home p = collision.GetComponent<Home>();
+            if (p.id != id)
+                p.HitBullet();
+        }
+
+
+        // Bullet hit sound
         // Particles
-        //Time.timeScale = 0.1f;
         GameObject g = Instantiate(splashParticles, transform.position, Quaternion.identity);
         g.transform.up = -rb.velocity.normalized;
 

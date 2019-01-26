@@ -65,10 +65,13 @@ public class Player : MonoBehaviour
     {
         Vector2 vel = rb.velocity;
         vel.x = horizontal * moveSpeed;
+
+        // Jump
         if (jump && nJumps > 0)
         {
             --nJumps;
             vel.y = jumpSpeed;
+            // Play jump sound
         }
         rb.velocity = vel;
     }
@@ -112,6 +115,7 @@ public class Player : MonoBehaviour
         {
             // SHOOT
             --bulletAmmo;
+            // Bullet shoot sound
             Vector3 dir = aimer.up;
             GameObject g = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
             Bullet b = g.GetComponent<Bullet>();
@@ -124,6 +128,7 @@ public class Player : MonoBehaviour
         {
             // SHOOT
             --bombAmmo;
+            // Bomb shoot sound
             Vector3 dir = aimer.up;
             GameObject g = Instantiate(bombPrefab, bulletSpawn.position, Quaternion.identity);
             Bomb b = g.GetComponent<Bomb>();
@@ -152,7 +157,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Hit()
+    public void HitBullet()
+    {
+
+    }
+
+    public void HitBomb()
     {
 
     }
