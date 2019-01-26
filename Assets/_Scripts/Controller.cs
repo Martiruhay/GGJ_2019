@@ -14,8 +14,6 @@ public class Controller : MonoBehaviour
     [Header("References")]
     public GameObject endGameObject;
     public GameObject player1, player2;
-    public GameObject player1EndObject;
-    public GameObject player2EndObject;
 
     private void Awake()
     {
@@ -29,7 +27,7 @@ public class Controller : MonoBehaviour
         AudioManager.instance.Stop("title_music");
         AudioManager.instance.Play("game_music");
 
-        endGameObject.SetActive(false);
+        //endGameObject.SetActive(false);
     }
 
     public void EndGame(int winer)
@@ -41,15 +39,15 @@ public class Controller : MonoBehaviour
     {
         Debug.Log("Player " + winer + " wins!");
 
+        PlayerPrefs.SetInt("winer", winer);
+
         player1.SetActive(false);
         player2.SetActive(false);
 
         endGameObject.SetActive(true);
-        //if (winer == 1)
-        //    player1EndObject.SetActive(true);
-        //else
-        //    player2EndObject.SetActive(true);
+
         yield return new WaitForSeconds(endGameTime);
-        SceneManager.LoadSceneAsync("Title");
+
+        SceneManager.LoadSceneAsync("End");
     }
 }
