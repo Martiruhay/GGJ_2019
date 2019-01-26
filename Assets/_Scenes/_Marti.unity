@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &98532855 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5733894139806007228, guid: fd1b15ad2af830448aac313d191ff140,
+    type: 3}
+  m_PrefabInstance: {fileID: 5733894139760832953}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &167926502
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,8 +332,9 @@ GameObject:
   m_Component:
   - component: {fileID: 839258715}
   - component: {fileID: 839258714}
+  - component: {fileID: 839258716}
   m_Layer: 0
-  m_Name: Controller
+  m_Name: CONTROLLER
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -347,6 +354,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletDamage: 1
   bombDamage: 3
+  bulletStunDuration: 0
+  bombStunDuration: 0
 --- !u!4 &839258715
 Transform:
   m_ObjectHideFlags: 0
@@ -361,6 +370,91 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &839258716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 839258713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d33c8ecd6df4854da4ecc0fd31e203d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: title_music
+    clip: {fileID: 8300000, guid: a8944fdb0438e6b46966eb7e02a52f02, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    dontRepeat: 1
+    source: {fileID: 0}
+  - name: game_music
+    clip: {fileID: 8300000, guid: 4fb4b223d46883940bbfdaa0549f0108, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 1
+    dontRepeat: 1
+    source: {fileID: 0}
+  - name: bullet_shoot
+    clip: {fileID: 8300000, guid: 23f0aa63ab97c6c44933d9537b961bb8, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.3
+    loop: 0
+    dontRepeat: 0
+    source: {fileID: 0}
+  - name: bullet_hit
+    clip: {fileID: 8300000, guid: ce0672ddd629d154a9a50f446d2311d9, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.3
+    loop: 0
+    dontRepeat: 0
+    source: {fileID: 0}
+  - name: throw_bomb
+    clip: {fileID: 8300000, guid: 90c11cb0967f45940847dcfc7b40117a, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.3
+    loop: 0
+    dontRepeat: 0
+    source: {fileID: 0}
+  - name: explode_bomb
+    clip: {fileID: 8300000, guid: 5b259da81a98255449bb087cefb0d7a1, type: 3}
+    volume: 1
+    volumeVariance: 0.2
+    pitch: 1
+    pitchVariance: 0.3
+    loop: 0
+    dontRepeat: 0
+    source: {fileID: 0}
+  - name: jump_boi
+    clip: {fileID: 8300000, guid: 09b76fa5fc58d4742bc1c5a1722aff75, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    dontRepeat: 0
+    source: {fileID: 0}
+  - name: landing
+    clip: {fileID: 8300000, guid: d287ee0954d79134a9233df09fa15a8f, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.2
+    loop: 0
+    dontRepeat: 0
+    source: {fileID: 0}
 --- !u!1 &891562715
 GameObject:
   m_ObjectHideFlags: 0
@@ -467,6 +561,99 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!1 &2092184802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2092184803}
+  - component: {fileID: 2092184804}
+  - component: {fileID: 2092184805}
+  m_Layer: 0
+  m_Name: StunObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2092184803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092184802}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 98532855}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &2092184804
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092184802}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -2044264899
+  m_SortingLayer: 1
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300014, guid: 17b5bc7134d01284087219146bec7775, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 8.88, y: 7.68}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &2092184805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2092184802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7636874ecdfad8479130dae44dad7c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 360
 --- !u!1001 &5733894139760832953
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -534,5 +721,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5733894139806007216, guid: fd1b15ad2af830448aac313d191ff140,
+        type: 3}
+      propertyPath: stunObject
+      value: 
+      objectReference: {fileID: 2092184802}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd1b15ad2af830448aac313d191ff140, type: 3}

@@ -56,6 +56,7 @@ public class Bomb : MonoBehaviour
     {
         Debug.Log("BOUM!");
         // Bomb explosion sound
+        AudioManager.instance.Play("explode_bomb");
 
         // Particles
         GameObject g = Instantiate(splashParticles, transform.position, Quaternion.identity);

@@ -58,6 +58,7 @@ public class Bullet : MonoBehaviour
 
 
         // Bullet hit sound
+        AudioManager.instance.Play("bullet_hit");
         // Particles
         GameObject g = Instantiate(splashParticles, transform.position, Quaternion.identity);
         ParticleSystem.MainModule settings = g.GetComponent<ParticleSystem>().main;

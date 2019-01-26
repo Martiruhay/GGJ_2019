@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public int maxJumps;
     public LayerMask groundMask;
     public float fallMult, lowJumpMult;
+    public int nJumpParticles;
 
     [Header("Shooting")]
     public float bulletSpeed;
@@ -34,6 +35,8 @@ public class Player : MonoBehaviour
     public Transform bombSpawn;
     public Animator animAttack, animMove, gunAnim;
     public Ammo ammo;
+    public ParticleSystem jumpPS, landPS, shootPS;
+    public GameObject stunObject;
 
     [Header("Prefabs")]
     public GameObject bulletPrefab;
@@ -45,6 +48,8 @@ public class Player : MonoBehaviour
     private bool jump, fire1, fire2;
     private int nJumps;
     public bool grounded;
+    private bool stuned;
+    private float stunTimer;
 
     private void Awake()
     {
@@ -89,6 +94,9 @@ public class Player : MonoBehaviour
             --nJumps;
             vel.y = jumpSpeed;
             // Play jump sound
+            AudioManager.instance.Play("jump_boi");
+
+            jumpPS.Emit(nJumpParticles);
         }
         rb.velocity = vel;
 
@@ -129,6 +137,8 @@ public class Player : MonoBehaviour
     private void HandleLanding()
     {
         nJumps = maxJumps;
+        landPS.Emit(nJumpParticles);
+        AudioManager.instance.Play("landing");
     }
 
     private void HandleShoot()
@@ -139,6 +149,7 @@ public class Player : MonoBehaviour
             // SHOOT
             --bulletAmmo;
             // Bullet shoot sound
+            AudioManager.instance.Play("bullet_shoot");
             Vector3 dir = aimer.up;
             GameObject g = Instantiate(bulletPrefab, bulletSpawn.position, Quaternion.identity);
             Bullet b = g.GetComponent<Bullet>();
@@ -146,6 +157,7 @@ public class Player : MonoBehaviour
             b.id = playerNum;
             b.rb.velocity = bulletSpeed * dir;
             gunAnim.SetTrigger("shoot");
+            shootPS.Emit(20);
         }
 
         // Bomb
@@ -154,6 +166,7 @@ public class Player : MonoBehaviour
             // SHOOT
             --bombAmmo;
             // Bomb shoot sound
+            AudioManager.instance.Play("throw_bomb");
             Vector3 dir = aimer.up;
             GameObject g = Instantiate(bombPrefab, bombSpawn.position, Quaternion.identity);
             g.transform.parent = bombSpawn;
@@ -179,9 +192,10 @@ public class Player : MonoBehaviour
     {
         while (true)
         {
-            if (bulletAmmo < maxBulletAmmo)
-                ++bulletAmmo;
+            while (bulletAmmo >= maxBulletAmmo)
+                yield return null;
             yield return new WaitForSeconds(bulletRefillTime);
+                ++bulletAmmo;
         }
     }
 
@@ -189,19 +203,38 @@ public class Player : MonoBehaviour
     {
         while (true)
         {
-            if (bombAmmo < maxBombAmmo)
-                ++bombAmmo;
+            while (bombAmmo >= maxBombAmmo)
+                yield return null;
             yield return new WaitForSeconds(bombRefillTime);
+            ++bombAmmo;
+        }
+    }
+
+    private IEnumerator Stun()
+    {
+        while (true)
+        {
+            stuned = false;
+            stunTimer = 0;
+            stunObject.SetActive(false);
+            while (stunTimer > 0)
+            {   // STUNED
+                stuned = true;
+                stunTimer -= Time.deltaTime;
+                stunObject.SetActive(true);
+                yield return null;
+            }
+            yield return null;
         }
     }
 
     public void HitBullet()
     {
-
+        stunTimer += controller.bulletStunDuration;
     }
 
     public void HitBomb()
     {
-
+        stunTimer += controller.bombStunDuration;
     }
 }
