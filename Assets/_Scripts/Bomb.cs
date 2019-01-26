@@ -9,17 +9,37 @@ public class Bomb : MonoBehaviour
     public float maxRotationSpeed;
 
     public Rigidbody2D rb;
-    public GameObject splashParticles;
+    public GameObject splashParticles, splashAnim;
+
+    private Collider2D col;
+    private Color myColor;
 
     private void Start()
     {
         Destroy(gameObject, lifetime);
-        rb.angularVelocity = Random.Range(-maxRotationSpeed, maxRotationSpeed);
+        col = GetComponent<Collider2D>();
+        col.enabled = false;
     }
 
-    private void Update()
+    public void SetColor(Color c)
     {
+        myColor = c;
+        GetComponent<SpriteRenderer>().color = myColor;
+    }
 
+    public void Shoot(Vector3 newVel)
+    {
+        transform.parent = null;
+        rb.simulated = true;
+        rb.angularVelocity = Random.Range(-maxRotationSpeed, maxRotationSpeed);
+        rb.velocity = newVel;
+        StartCoroutine(EnableCol());
+    }
+
+    IEnumerator EnableCol()
+    {
+        yield return new WaitForSeconds(0.1f);
+        col.enabled = true;
     }
 
 
@@ -30,6 +50,11 @@ public class Bomb : MonoBehaviour
 
         // Particles
         GameObject g = Instantiate(splashParticles, transform.position, Quaternion.identity);
+        ParticleSystem.MainModule settings = g.GetComponent<ParticleSystem>().main;
+        settings.startColor = myColor;
+
+        g = Instantiate(splashAnim, transform.position, Quaternion.identity);
+        g.GetComponent<SpriteRenderer>().color = myColor;
 
         Destroy(gameObject);
     }
