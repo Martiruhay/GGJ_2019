@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     public Transform bulletSpawn;
     public Transform bombSpawn;
     public Animator animAttack, animMove, gunAnim;
+    public Ammo ammo;
 
     [Header("Prefabs")]
     public GameObject bulletPrefab;
@@ -54,6 +55,9 @@ public class Player : MonoBehaviour
     {
         nJumps = maxJumps;
         bulletAmmo = maxBulletAmmo;
+
+        ammo.show = myColor;
+
         StartCoroutine(BulletRefill());
         StartCoroutine(BombRefill());
     }
@@ -159,6 +163,8 @@ public class Player : MonoBehaviour
             StartCoroutine(ShootBalloon(b, bombSpeed * dir));
             animAttack.SetTrigger("balloon");
         }
+
+        ammo.SetAmmo(bulletAmmo, bombAmmo);
     }
 
     IEnumerator ShootBalloon(Bomb b, Vector3 velocity)
