@@ -6,16 +6,18 @@ public class Bomb : MonoBehaviour
 {
     public int id;
     public float lifetime;
+    public float maxRotationSpeed;
 
     public Rigidbody2D rb;
     public GameObject splashParticles;
 
-    void Start()
+    private void Start()
     {
         Destroy(gameObject, lifetime);
+        rb.angularVelocity = Random.Range(-maxRotationSpeed, maxRotationSpeed);
     }
 
-    void Update()
+    private void Update()
     {
 
     }

@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     public Transform rayEnd;
     public Transform aimer;
     public Transform bulletSpawn;
+    public Animator anim1, anim2;
 
     [Header("Prefabs")]
     public GameObject bulletPrefab;
@@ -61,6 +62,14 @@ public class Player : MonoBehaviour
         HandleShoot();
     }
 
+    private void HandleInput()
+    {
+        horizontal = Input.GetAxis("Horizontal_P" + playerNum);
+        jump = Input.GetButtonDown("Jump_P" + playerNum);
+        fire1 = Input.GetButtonDown("Fire1_P" + playerNum);
+        fire2 = Input.GetButtonDown("Fire2_P" + playerNum);
+    }
+
     private void HandleMovement()
     {
         Vector2 vel = rb.velocity;
@@ -74,14 +83,7 @@ public class Player : MonoBehaviour
             // Play jump sound
         }
         rb.velocity = vel;
-    }
-
-    private void HandleInput()
-    {
-        horizontal = Input.GetAxis("Horizontal_P" + playerNum);
-        jump = Input.GetButtonDown("Jump_P" + playerNum);
-        fire1 = Input.GetButtonDown("Fire1_P" + playerNum);
-        fire2 = Input.GetButtonDown("Fire2_P" + playerNum);
+        anim2.SetFloat("speed", Mathf.Abs(rb.velocity.x));
     }
 
     private void CheckFloor()
@@ -101,6 +103,7 @@ public class Player : MonoBehaviour
         {
             grounded = false;
         }
+        anim2.SetBool("grounded", grounded);
     }
 
     private void HandleLanding()
@@ -134,6 +137,7 @@ public class Player : MonoBehaviour
             Bomb b = g.GetComponent<Bomb>();
             b.id = playerNum;
             b.rb.velocity = bombSpeed * dir;
+            anim1.SetTrigger("balloon");
         }
     }
 

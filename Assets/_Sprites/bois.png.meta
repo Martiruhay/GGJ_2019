@@ -11,7 +11,7 @@ TextureImporter:
     21300012: bois_7
     21300014: bois_8
     21300016: bois_9
-    21300018: bois_10
+    21300018: balloon
     21300020: bois_11
     21300022: bois_12
     21300024: bois_13
@@ -300,7 +300,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bois_10
+      name: balloon
       rect:
         serializedVersion: 2
         x: 1366
