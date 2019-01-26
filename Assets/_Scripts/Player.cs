@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     public Transform rayEnd;
     public Transform aimer;
     public Transform bulletSpawn;
+    public Transform bombSpawn;
     public Animator anim1, anim2;
 
     [Header("Prefabs")]
@@ -133,7 +134,7 @@ public class Player : MonoBehaviour
             --bombAmmo;
             // Bomb shoot sound
             Vector3 dir = aimer.up;
-            GameObject g = Instantiate(bombPrefab, bulletSpawn.position, Quaternion.identity);
+            GameObject g = Instantiate(bombPrefab, bombSpawn.position, Quaternion.identity);
             Bomb b = g.GetComponent<Bomb>();
             b.id = playerNum;
             b.rb.velocity = bombSpeed * dir;

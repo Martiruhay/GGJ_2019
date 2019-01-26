@@ -63,7 +63,7 @@ public class Bomb : MonoBehaviour
         }
         else if (collision.CompareTag("Player"))
         {
-            Player p = gameObject.GetComponent<Player>();
+            Player p = collision.GetComponent<Player>();
             if (p.playerNum != id)
             {
                 p.HitBomb();

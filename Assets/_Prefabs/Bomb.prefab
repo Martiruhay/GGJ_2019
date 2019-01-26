@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300018, guid: 7912a39b0628c7043a612b07beaa7add, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   lifetime: 5
-  maxRotationSpeed: 90
+  maxRotationSpeed: 360
   rb: {fileID: 3011049845530247906}
   splashParticles: {fileID: 7644126987202187844, guid: d3e73365950397b42b730f1c1bc89b30,
     type: 3}
