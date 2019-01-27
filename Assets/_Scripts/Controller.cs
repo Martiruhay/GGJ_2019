@@ -34,6 +34,7 @@ public class Controller : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.visible = false;
         Player.controller = this;
         Home.controller = this;
         Aimer.controller = this;
