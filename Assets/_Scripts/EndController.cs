@@ -40,9 +40,9 @@ public class EndController : MonoBehaviour
             player2EndObject.SetActive(true);
         }
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0);
 
-        float t1 = 0, t2 = 4;
+        float t1 = 0, t2 = 2;
         while (t1 < t2)
         {
             t1 += Time.deltaTime;
@@ -57,7 +57,7 @@ public class EndController : MonoBehaviour
             texts[i].SetActive(true);
             TextMeshProUGUI t = texts[i].GetComponent<TextMeshProUGUI>();
 
-            t1 = 0; t2 = 2;
+            t1 = 0; t2 = 1;
             while (t1 < t2)
             {
                 t1 += Time.deltaTime;
@@ -67,9 +67,9 @@ public class EndController : MonoBehaviour
                 yield return null;
             }
 
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1);
 
-            t1 = 0; t2 = 2;
+            t1 = 0; t2 = 1;
             while (t1 < t2)
             {
                 t1 += Time.deltaTime;
@@ -79,6 +79,7 @@ public class EndController : MonoBehaviour
                 yield return null;
             }
 
+            yield return new WaitForSeconds(2);
 
             texts[i].SetActive(false);
         }
