@@ -1707,7 +1707,8 @@ MonoBehaviour:
   bombDamage: 15
   bulletStunDuration: 1
   bombStunDuration: 2
-  aimerSpeed: 180
+  aimerMinSpeed: 90
+  aimerMaxSpeed: 360
   endGameTime: 0
   homeMaxHp: 55
   endGameObject: {fileID: 0}
@@ -4685,5 +4686,69 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1709898622, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: myColor.r
+      value: 0.02352939
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709898622, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: myColor.g
+      value: 0.6726498
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709898622, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: myColor.b
+      value: 0.972549
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709898622, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: myColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709898622, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: disableColor.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709898622, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: disableColor.r
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709898622, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: disableColor.g
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709898622, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: disableColor.b
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709898622, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: glowInt
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 990946453, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c42435bb1acbc448842a56f3f71b3ec, type: 2}
+    - target: {fileID: 481872434, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c42435bb1acbc448842a56f3f71b3ec, type: 2}
+    - target: {fileID: 1875776842, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c42435bb1acbc448842a56f3f71b3ec, type: 2}
+    - target: {fileID: 611823872, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c42435bb1acbc448842a56f3f71b3ec, type: 2}
+    - target: {fileID: 890885083, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c42435bb1acbc448842a56f3f71b3ec, type: 2}
+    - target: {fileID: 1252393443, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c42435bb1acbc448842a56f3f71b3ec, type: 2}
+    - target: {fileID: 211191813, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8c42435bb1acbc448842a56f3f71b3ec, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd1b15ad2af830448aac313d191ff140, type: 3}

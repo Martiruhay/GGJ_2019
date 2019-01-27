@@ -3,12 +3,12 @@
 	Properties
 	{
 		_MainTex("Texture", 2D) = "white" {}
-		_Color("Main color", Color) = (1,1,1,1)
+		[PerRendererData]_Color("Main color", Color) = (1,1,1,1)
 		_Width("Outline Width", Range(0,0.05)) = 0.003
 		_Alpha("General Alpha",  Range (0,1)) = 1
 		_Alpha2("Outline Alpha",  Range (0,1)) = 1
 		_Glow("Sprite Glow Intensity", Range(0,50)) = 1
-		_Glow2("Outline Glow Intensity", Range(0,50)) = 1
+		[PerRendererData]_Glow2("Outline Glow Intensity", Range(0,50)) = 1
 		_HitGlow("Hit Glow Intensity", Range(0,50)) = 1
 		_Blend("Blend 1-2",  Range (0,1)) = 1
 	}
