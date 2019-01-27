@@ -24,7 +24,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Angle: 18.409233
+    - _Angle: 95.693085
     - _FadeIntensity: 1
     - _Glow: 4.3
     m_Colors:

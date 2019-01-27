@@ -131,7 +131,7 @@ MonoBehaviour:
     type: 3}
   minStainSize: 3
   maxStainSize: 5
-  areaOfEffect: 7
+  areaOfEffect: 9
   mag: 6
   rough: 10
   fadeI: 0

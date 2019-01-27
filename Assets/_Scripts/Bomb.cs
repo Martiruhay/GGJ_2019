@@ -92,6 +92,10 @@ public class Bomb : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Player") && id == collision.GetComponent<Player>().playerNum)
+        {
+            return;
+        }
         bool found = false;
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, areaOfEffect);
         foreach (Collider2D c in cols)
@@ -143,11 +147,19 @@ public class Bomb : MonoBehaviour
     private void BombImpact(Collider2D collision)
     {
         Bomb b = collision.GetComponent<Bomb>();
+        if (b.id != id)
+        {
+
+        }
     }
 
     private void BulletImpact(Collider2D collision)
     {
         Bullet b = collision.GetComponent<Bullet>();
+        if (b.id != id)
+        {
+
+        }
     }
 
     private void OnBecameInvisible()
