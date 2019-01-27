@@ -135,7 +135,9 @@ MonoBehaviour:
   id: 0
   lifetime: 5
   rb: {fileID: 826431366279634299}
-  splashParticles: {fileID: 7644126987202187844, guid: 4d72caf6dbac5c44cb3da6d309a953cd,
+  splashParticles1: {fileID: 7644126987202187844, guid: 4d72caf6dbac5c44cb3da6d309a953cd,
+    type: 3}
+  splashParticles2: {fileID: 7644126987202187844, guid: cf11004b597d7c84faf1766b3856c2fa,
     type: 3}
   stainPrefab: {fileID: 8569990058532083063, guid: 80835d3a8fea2704c8b4f24e6249128f,
     type: 3}

@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _Alpha: 1
-    - _Blend: 0.000000029802322
+    - _Blend: 0
     - _Glow: 1
     - _HitGlow: 8.2
     m_Colors:

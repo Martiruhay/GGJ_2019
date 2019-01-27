@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
     public float lifetime;
     
     public Rigidbody2D rb;
-    public GameObject splashParticles;
+    public GameObject splashParticles1, splashParticles2;
     public GameObject stainPrefab;
 
     public float minStainSize, maxStainSize;
@@ -92,7 +92,7 @@ public class Bullet : MonoBehaviour
         // Bullet hit sound
         AudioManager.instance.Play("bullet_hit");
         // Particles
-        GameObject g = Instantiate(splashParticles, transform.position, Quaternion.identity);
+        GameObject g = Instantiate(id == 1 ? splashParticles1 : splashParticles2, transform.position, Quaternion.identity);
         //ParticleSystem.MainModule settings = g.GetComponent<ParticleSystem>().main;
         //float H, S, V;
         //Color.RGBToHSV(myColor, out H, out S, out V);

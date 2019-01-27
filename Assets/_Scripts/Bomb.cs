@@ -11,7 +11,7 @@ public class Bomb : MonoBehaviour
     public float maxRotationSpeed;
 
     public Rigidbody2D rb;
-    public GameObject splashParticles, splashAnim;
+    public GameObject splashParticles1, splashParticles2, splashAnim;
     public GameObject stainPrefab;
 
     public float minStainSize, maxStainSize;
@@ -81,9 +81,9 @@ public class Bomb : MonoBehaviour
         AudioManager.instance.Play("explode_bomb");
 
         // Particles
-        GameObject g = Instantiate(splashParticles, transform.position, Quaternion.identity);
-        ParticleSystem.MainModule settings = g.GetComponent<ParticleSystem>().main;
-        settings.startColor = myColor;
+        GameObject g = Instantiate(id == 1 ? splashParticles1 : splashParticles2, transform.position, Quaternion.identity);
+        //ParticleSystem.MainModule settings = g.GetComponent<ParticleSystem>().main;
+        //settings.startColor = myColor;
 
         g = Instantiate(splashAnim, transform.position, Quaternion.identity);
         g.GetComponent<SpriteRenderer>().color = myColor;
