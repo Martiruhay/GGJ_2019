@@ -12,6 +12,8 @@ public class TitleController : MonoBehaviour
         AudioManager.instance.Stop("game_music");
         AudioManager.instance.Stop("sad_music");
         AudioManager.instance.Play("title_music");
+
+        Cursor.visible = false;
     }
 
     private void Update()
