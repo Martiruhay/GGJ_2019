@@ -4,9 +4,10 @@
 	{
 		_MainTex("Texture", 2D) = "white" {}
 		_Color("Main Color", Color) = (1, 1, 1, 1)
-		_FadeMask("_FadeMask", 2D) = "Grey" {}
 		_FadeIntensity("_FadeIntensity", Range(-1, 1)) = 0
-		[PerRendererData]_Angle("Angle of rotation of fade", Range(-6.2831, 6.2831)) = 0
+		_Angle("Angle of rotation of fade", Range(0, 6.2831)) = 0
+		_ColorG("Glow Color", Color) = (1,1,1,1)
+		_Glow("Glow Intensity", Range(0,50)) = 1
 	}
 
 	SubShader
@@ -36,9 +37,9 @@
 				float4 vertex : SV_POSITION;
 			};
 
-			sampler2D _MainTex, _FadeMask;
-			float4 _MainTex_ST, _Color;
-			float _FadeIntensity, _Angle;
+			sampler2D _MainTex;
+			float4 _MainTex_ST, _Color, _ColorG;
+			float _FadeIntensity, _Angle, _Glow;
 			
 			v2f vert (appdata v)
 			{
@@ -60,10 +61,9 @@
 			
 			fixed4 frag (v2f i) : SV_Target
 			{
-				fixed4 c = tex2D(_MainTex, i.uv);
-				//c.a *= saturate(tex2D(_FadeMask, i.uv2).r + _FadeIntensity);
-				c.a *= saturate(i.uv2.y + _FadeIntensity);
-				return c * _Color;
+				fixed4 c = tex2D(_MainTex, i.uv2);
+				c.a *= _FadeIntensity;
+				return c * _Color * _ColorG * _Glow;
 			}
 			ENDCG
 		}
