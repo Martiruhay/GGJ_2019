@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Bomb : MonoBehaviour
 {
@@ -41,6 +42,8 @@ public class Bomb : MonoBehaviour
         transform.parent = null;
         rb.simulated = true;
         rb.angularVelocity = Random.Range(-maxRotationSpeed, maxRotationSpeed);
+        GetComponent<Animator>().enabled = false;
+        transform.DOShakeScale(10f, 0.15f, 10, 90.0f, fadeOut: false);
         rb.velocity = newVel;
         StartCoroutine(EnableCol());
     }

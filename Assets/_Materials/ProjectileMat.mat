@@ -28,10 +28,10 @@ Material:
     - _Alpha2: 1
     - _Blend: 0
     - _Glow: 1
-    - _Glow2: 2
+    - _Glow2: 4
     - _HitGlow: 1
     - _Width: 0.0098
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorHit: {r: 1, g: 1, b: 1, a: 1}
-    - _ColorOutline: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorOutline: {r: 1, g: 0.051568095, b: 0, a: 1}
