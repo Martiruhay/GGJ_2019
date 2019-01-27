@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public int maxBombAmmo;
     public int bombAmmo;
     public float bombShootT;
+    private float smoothHit;
 
     [Header("References")]
     public Transform rayEnd;
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
     public Ammo ammo;
     public ParticleSystem jumpPS, landPS, shootPS;
     public GameObject stunObject;
+    public Material matHit;
 
     [Header("Prefabs")]
     public GameObject bulletPrefab;
@@ -60,8 +62,10 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        matHit.SetFloat("_Blend", 0f);
         nJumps = maxJumps;
         bulletAmmo = maxBulletAmmo;
+        GetControllerValues();
 
         ammo.show = myColor;
 
@@ -69,6 +73,25 @@ public class Player : MonoBehaviour
         StartCoroutine(BombRefill());
         StartCoroutine(Stun());
         StartCoroutine(WalkingParticles());
+    }
+
+    private void GetControllerValues()
+    {
+        moveSpeed = controller.moveSpeed;
+        jumpSpeed = controller.jumpSpeed;
+        maxJumps = controller.maxJumps;
+        fallMult = controller.fallMult;
+        lowJumpMult = controller.lowJumpMult;
+        bulletSpeed = controller.bulletSpeed;
+        bulletRefillTime = controller.bulletRefillTime;
+        maxBulletAmmo = controller.maxBulletAmmo;
+        bulletAmmo = controller.bulletAmmo;
+        bombSpeed = controller.bombSpeed;
+        bombRefillTime = controller.bombRefillTime;
+        maxBombAmmo = controller.maxBombAmmo;
+        bombAmmo = controller.bombAmmo;
+        bombShootT = controller.bombShootT;
+        smoothHit = controller.smoothHit;
     }
 
     private void Update()
@@ -257,11 +280,27 @@ public class Player : MonoBehaviour
     public void HitBullet()
     {
         stunTimer += controller.bulletStunDuration;
+        StopCoroutine(HitGlow());
+        StartCoroutine(HitGlow());
     }
 
     public void HitBomb()
     {
         stunTimer += controller.bombStunDuration;
+        StopCoroutine(HitGlow());
+        StartCoroutine(HitGlow());
+    }
+
+    IEnumerator HitGlow()
+    {
+        float g = 1.0f;
+        matHit.SetFloat("_Blend", g);
+        while (g > 0.01f)
+        {
+            g = Mathf.MoveTowards(g, 0f, smoothHit);
+            yield return null;
+            matHit.SetFloat("_Blend", g);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)

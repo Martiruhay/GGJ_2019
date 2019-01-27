@@ -55,12 +55,6 @@
 			fixed4 frag (v2f i) : SV_Target
 			{
 				fixed4 c = tex2D(_MainTex, i.uv) * _Color;
-
-				_Blend = (max(0, sin((_Time.y*2) % (2*3.1416))));
-				if(((_Time.y*2) % (2*3.1416)) < 1.5707){
-					_Blend = 0;
-				}
-
 				half4 e = tex2D(_Emissive, i.uv) * _ColorG * _Glow;
 				c.rgb += e.rgb;
 				c.rgb = lerp(c.rgb, _ColorHit.rgb * _HitGlow,_Blend);

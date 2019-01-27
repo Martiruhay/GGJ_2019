@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using EZCameraShake;
 
 public class Bomb : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Bomb : MonoBehaviour
     private Collider2D col;
     private Color myColor;
     private Material mat;
+
+    public float mag, rough, fadeI, fadeO;
 
     private void Start()
     {
@@ -85,6 +88,8 @@ public class Bomb : MonoBehaviour
         g = Instantiate(splashAnim, transform.position, Quaternion.identity);
         g.GetComponent<SpriteRenderer>().color = myColor;
 
+        CameraShaker.Instance.ShakeOnce(mag, rough, fadeI, fadeO);
+
         Destroy(gameObject);
     }
 
@@ -132,5 +137,10 @@ public class Bomb : MonoBehaviour
             InstantiateStain();
             Explode();
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        Destroy(gameObject);
     }
 }
