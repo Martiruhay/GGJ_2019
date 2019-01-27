@@ -1813,6 +1813,21 @@ PrefabInstance:
       propertyPath: playerNum
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5733894139806007216, guid: fd1b15ad2af830448aac313d191ff140,
+        type: 3}
+      propertyPath: myColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5733894139806007216, guid: fd1b15ad2af830448aac313d191ff140,
+        type: 3}
+      propertyPath: myColor.g
+      value: 0.5013488
+      objectReference: {fileID: 0}
+    - target: {fileID: 5733894139806007216, guid: fd1b15ad2af830448aac313d191ff140,
+        type: 3}
+      propertyPath: myColor.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2642975172725582661, guid: fd1b15ad2af830448aac313d191ff140,
         type: 3}
       propertyPath: m_LocalRotation.x

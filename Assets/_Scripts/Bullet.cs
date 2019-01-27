@@ -27,6 +27,7 @@ public class Bullet : MonoBehaviour
     {
         myColor = c;
         GetComponent<SpriteRenderer>().color = myColor;
+        GetComponent<TrailRenderer>().material.color = myColor;
         mat = GetComponent<SpriteRenderer>().material;
         if (mat == null)
         {
