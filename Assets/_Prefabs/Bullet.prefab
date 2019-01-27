@@ -70,7 +70,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1383147157
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300020, guid: 7912a39b0628c7043a612b07beaa7add, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -137,6 +137,10 @@ MonoBehaviour:
   rb: {fileID: 826431366279634299}
   splashParticles: {fileID: 7644126987202187844, guid: 4d72caf6dbac5c44cb3da6d309a953cd,
     type: 3}
+  stainPrefab: {fileID: 8569990058532083063, guid: 80835d3a8fea2704c8b4f24e6249128f,
+    type: 3}
+  minStainSize: 1
+  maxStainSize: 2
 --- !u!96 &1296304
 TrailRenderer:
   serializedVersion: 2
@@ -173,7 +177,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1383147157
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Time: 0.2
   m_Parameters:

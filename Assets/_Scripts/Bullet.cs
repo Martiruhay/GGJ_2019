@@ -9,6 +9,9 @@ public class Bullet : MonoBehaviour
     
     public Rigidbody2D rb;
     public GameObject splashParticles;
+    public GameObject stainPrefab;
+
+    public float minStainSize, maxStainSize;
 
     private Color myColor;
     private Material mat;
@@ -37,6 +40,17 @@ public class Bullet : MonoBehaviour
         mat.SetColor("_Color", myColor);
     }
 
+    private void InstantiateStain()
+    {
+        // Stain
+        float rd = Random.Range(0, maxStainSize);
+        Vector3 pos = transform.position + (Vector3)rb.velocity.normalized * rd;
+        GameObject s = Instantiate(stainPrefab, pos, Quaternion.Euler(0, 0, Random.Range(0f, 360f)));
+        s.GetComponent<SpriteRenderer>().color = myColor;
+        float r = Random.Range(minStainSize, maxStainSize);
+        s.transform.localScale = new Vector3(r, r, r);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log("Trigger enter: " + collision.gameObject.name);
@@ -52,9 +66,15 @@ public class Bullet : MonoBehaviour
         }
         else if (collision.CompareTag("Home"))
         {
-            Home p = collision.GetComponent<Home>();
-            if (p.id != id)
-                p.HitBullet();
+            Home h = collision.GetComponent<Home>();
+            if (h.id != id)
+                h.HitBullet();
+
+            InstantiateStain();
+        }
+        else
+        {
+            InstantiateStain();
         }
 
 

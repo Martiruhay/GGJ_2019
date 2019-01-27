@@ -71,7 +71,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1383147157
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300018, guid: 7912a39b0628c7043a612b07beaa7add, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -125,6 +125,10 @@ MonoBehaviour:
     type: 3}
   splashAnim: {fileID: 1060102204902628608, guid: ac7e504334fcb394cb5785a1277347e3,
     type: 3}
+  stainPrefab: {fileID: 8569990058532083063, guid: 80835d3a8fea2704c8b4f24e6249128f,
+    type: 3}
+  minStainSize: 3
+  maxStainSize: 5
 --- !u!60 &223460929169620606
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -268,7 +272,7 @@ TrailRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1383147157
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Time: 0.42
   m_Parameters:

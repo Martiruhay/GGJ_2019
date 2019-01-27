@@ -51,6 +51,9 @@ TagManager:
   - name: Players
     uniqueID: 2250702397
     locked: 0
+  - name: Stains
+    uniqueID: 4245908243
+    locked: 0
   - name: Foreground
     uniqueID: 1383147157
     locked: 0

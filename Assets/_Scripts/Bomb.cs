@@ -11,6 +11,9 @@ public class Bomb : MonoBehaviour
 
     public Rigidbody2D rb;
     public GameObject splashParticles, splashAnim;
+    public GameObject stainPrefab;
+
+    public float minStainSize, maxStainSize;
 
     private Collider2D col;
     private Color myColor;
@@ -35,7 +38,17 @@ public class Bomb : MonoBehaviour
         }
         mat.SetColor("_ColorOutline", myColor);
         mat.SetColor("_Color", myColor);
+    }
 
+    private void InstantiateStain()
+    {
+        // Stain
+        float rd = Random.Range(0, maxStainSize);
+        Vector3 pos = transform.position + (Vector3)rb.velocity.normalized * rd;
+        GameObject s = Instantiate(stainPrefab, pos, Quaternion.Euler(0, 0, Random.Range(0f, 360f)));
+        s.GetComponent<SpriteRenderer>().color = myColor;
+        float r = Random.Range(minStainSize, maxStainSize);
+        s.transform.localScale = new Vector3(r, r, r);
     }
 
     public void Shoot(Vector3 newVel)
@@ -98,6 +111,7 @@ public class Bomb : MonoBehaviour
             if (b.id != id)
             {
                 Explode();
+                InstantiateStain();
             }
         }
         else if (collision.CompareTag("Player"))
@@ -112,6 +126,7 @@ public class Bomb : MonoBehaviour
         else
         {
             Explode();
+            InstantiateStain();
         }
     }
 }
