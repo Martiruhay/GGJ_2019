@@ -50,6 +50,12 @@ public class Controller : MonoBehaviour
         //endGameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+            SceneManager.LoadSceneAsync("Title");
+    }
+
     public void EndGame(int winer)
     {
         StartCoroutine(EndGameRoutine(winer));
