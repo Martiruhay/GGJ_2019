@@ -28,6 +28,7 @@ public class Controller : MonoBehaviour
     {
         AudioManager.instance.Stop("title_music");
         AudioManager.instance.Play("game_music");
+        AudioManager.instance.Stop("sad_music");
 
         //endGameObject.SetActive(false);
     }

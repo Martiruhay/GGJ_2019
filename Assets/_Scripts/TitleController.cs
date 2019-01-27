@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class TitleController : MonoBehaviour
 {
-    public Transform boi;
     public float rotationSpeed;
 
     private void Start()
@@ -17,6 +17,7 @@ public class TitleController : MonoBehaviour
 
     private void Update()
     {
-        boi.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+        if (Input.anyKeyDown)
+            SceneManager.LoadSceneAsync("Gameplay");
     }
 }
