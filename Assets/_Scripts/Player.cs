@@ -38,7 +38,7 @@ public class Player : MonoBehaviour
     public Ammo ammo;
     public ParticleSystem jumpPS, landPS, shootPS;
     public GameObject stunObject;
-    public Material matHit;
+    public Material matHit, confused;
 
     [Header("Prefabs")]
     public GameObject bulletPrefab;
@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
     private float stunTimer;
     private bool canShoot = true;
     private float triggers;
+    private float angle = 0f;
 
     private void Awake()
     {
@@ -101,6 +102,8 @@ public class Player : MonoBehaviour
         HandleMovement();
         HandleAimerSpeed();
         HandleShoot();
+        angle += (2f * Time.deltaTime) % 6.2831f;
+        confused.SetFloat("_Angle", angle);
     }
 
     private void HandleInput()
