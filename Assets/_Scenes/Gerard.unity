@@ -191,7 +191,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1383147157
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 50
   m_Sprite: {fileID: 21300020, guid: b23b0787f74723e4abfc6802fd846dee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -13570,6 +13570,10 @@ PrefabInstance:
       propertyPath: gunAnim
       value: 
       objectReference: {fileID: 1873403111}
+    - target: {fileID: 1625242279, guid: 45c540102409de24f9967fc4156de30c, type: 3}
+      propertyPath: shootPS
+      value: 
+      objectReference: {fileID: 696312609}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c540102409de24f9967fc4156de30c, type: 3}
 --- !u!1 &1904585711
@@ -14598,5 +14602,10 @@ PrefabInstance:
       propertyPath: gunAnim
       value: 
       objectReference: {fileID: 1418595959}
+    - target: {fileID: 5733894139806007216, guid: fd1b15ad2af830448aac313d191ff140,
+        type: 3}
+      propertyPath: shootPS
+      value: 
+      objectReference: {fileID: 210415083}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
