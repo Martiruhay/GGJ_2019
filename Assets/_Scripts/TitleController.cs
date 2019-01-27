@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class TitleController : MonoBehaviour
 {
-    public float rotationSpeed;
 
     private void Start()
     {
@@ -17,7 +16,9 @@ public class TitleController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.anyKeyDown)
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Application.Quit();
+        else if (Input.anyKeyDown)
             SceneManager.LoadSceneAsync("Gameplay");
     }
 }

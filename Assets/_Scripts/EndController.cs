@@ -47,7 +47,7 @@ public class EndController : MonoBehaviour
         {
             t1 += Time.deltaTime;
             Color c = congratulationsBG.color;
-            c.a = Mathf.Lerp(1, 0, t1 / t2);
+            c.a = Mathf.Lerp(1, .3f, t1 / t2);
             congratulationsBG.color = c;
             yield return null;
         }
