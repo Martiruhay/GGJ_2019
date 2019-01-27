@@ -275,7 +275,7 @@ public class Player : MonoBehaviour
         {
             while (!grounded || Mathf.Abs(rb.velocity.x) < .2f)
                 yield return null;
-            landPS.Emit(2);
+            landPS.Emit(Random.Range(2, 5));
             yield return new WaitForSeconds(.2f);
         }
     }
