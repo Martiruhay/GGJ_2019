@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Home : MonoBehaviour
 {
@@ -9,9 +10,16 @@ public class Home : MonoBehaviour
     public int id;
     public float hp;
 
+    public Image hpImage;
+
     private void Start()
     {
         hp = controller.homeMaxHp;
+    }
+
+    private void Update()
+    {
+        hpImage.fillAmount = hp / controller.homeMaxHp;
     }
 
     public void HitBullet()

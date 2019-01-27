@@ -141,8 +141,8 @@ MonoBehaviour:
     type: 3}
   stainPrefab: {fileID: 8569990058532083063, guid: 80835d3a8fea2704c8b4f24e6249128f,
     type: 3}
-  minStainSize: 1
-  maxStainSize: 2
+  minStainSize: 0.5
+  maxStainSize: 1
   mag: 5
   rough: 6
   fadeI: 0
