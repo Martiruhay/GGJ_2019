@@ -9,7 +9,9 @@ public class TestController : MonoBehaviour
 
     void Start()
     {
-        
+        string[] ss = Input.GetJoystickNames();
+        foreach (string s in ss)
+            print(s);
     }
 
     void Update()

@@ -107,11 +107,12 @@ public class Bomb : MonoBehaviour
         }
         else if (collision.CompareTag("Home"))
         {
-            Home b = collision.GetComponent<Home>();
-            if (b.id != id)
+            Home h = collision.GetComponent<Home>();
+            if (h.id != id)
             {
-                Explode();
+                h.HitBomb();
                 InstantiateStain();
+                Explode();
             }
         }
         else if (collision.CompareTag("Player"))
@@ -120,14 +121,14 @@ public class Bomb : MonoBehaviour
             if (p.playerNum != id)
             {
                 p.HitBomb();
-                Explode();
                 InstantiateStain();
+                Explode();
             }
         }
         else
         {
-            Explode();
             InstantiateStain();
+            Explode();
         }
     }
 }

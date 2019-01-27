@@ -13,8 +13,8 @@ public class Controller : MonoBehaviour
     public int homeMaxHp;
 
     [Header("References")]
-    public GameObject endGameObject;
-    public GameObject player1, player2;
+    public GameObject player1;
+    public GameObject player2;
 
     private void Awake()
     {
@@ -45,8 +45,6 @@ public class Controller : MonoBehaviour
 
         player1.SetActive(false);
         player2.SetActive(false);
-
-        endGameObject.SetActive(true);
 
         yield return new WaitForSeconds(endGameTime);
 

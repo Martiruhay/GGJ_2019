@@ -11,6 +11,7 @@ public class TitleController : MonoBehaviour
     private void Start()
     {
         AudioManager.instance.Stop("game_music");
+        AudioManager.instance.Stop("sad_music");
         AudioManager.instance.Play("title_music");
     }
 

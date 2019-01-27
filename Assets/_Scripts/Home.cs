@@ -22,6 +22,14 @@ public class Home : MonoBehaviour
             Die();
     }
 
+    public void HitBomb()
+    {
+        hp -= controller.bombDamage;
+
+        if (hp <= 0)
+            Die();
+    }
+
     void Die()
     {
         Debug.Log("Player " + id + "loses");
