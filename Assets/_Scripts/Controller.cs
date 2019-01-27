@@ -12,6 +12,22 @@ public class Controller : MonoBehaviour
     public float endGameTime;
     public int homeMaxHp;
 
+    [Header("Player")]
+    public float moveSpeed;
+    public float jumpSpeed;
+    public int maxJumps;
+    public float fallMult, lowJumpMult;
+    public float bulletSpeed;
+    public float bulletRefillTime;
+    public int maxBulletAmmo;
+    public int bulletAmmo;
+    public float bombSpeed;
+    public float bombRefillTime;
+    public int maxBombAmmo;
+    public int bombAmmo;
+    public float bombShootT;
+    public float smoothHit;
+
     [Header("References")]
     public GameObject player1;
     public GameObject player2;

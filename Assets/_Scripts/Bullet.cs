@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class Bullet : MonoBehaviour
 {
@@ -18,6 +19,8 @@ public class Bullet : MonoBehaviour
     private Color myColor;
     private Material mat;
 
+    public float mag, rough, fadeI, fadeO;
+
     void Start()
     {
         Destroy(gameObject, lifetime);
@@ -26,6 +29,7 @@ public class Bullet : MonoBehaviour
     private void HitBullet()
     {
         Debug.Log("Hit bullet!");
+        CameraShaker.Instance.ShakeOnce(mag * 0.5f, rough * 0.5f, fadeI, fadeO);
     }
 
     public void SetColor(Color c)
@@ -66,7 +70,10 @@ public class Bullet : MonoBehaviour
         {
             Player p = collision.GetComponent<Player>();
             if (p.playerNum != id)
+            {
                 p.HitBullet();
+                CameraShaker.Instance.ShakeOnce(mag, rough, fadeI, fadeO);
+            }
         }
         else if (collision.CompareTag("Home"))
         {
@@ -90,6 +97,11 @@ public class Bullet : MonoBehaviour
         settings.startColor = myColor;
         g.transform.up = -rb.velocity.normalized;
 
+        Destroy(gameObject);
+    }
+
+    private void OnBecameInvisible()
+    {
         Destroy(gameObject);
     }
 }
