@@ -45,11 +45,11 @@ TagManager:
   - name: Background
     uniqueID: 865483461
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Stains
     uniqueID: 4245908243
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Players
     uniqueID: 2250702397

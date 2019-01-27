@@ -46,7 +46,9 @@ public class Bomb : MonoBehaviour
         float rd = Random.Range(0, maxStainSize);
         Vector3 pos = transform.position + (Vector3)rb.velocity.normalized * rd;
         GameObject s = Instantiate(stainPrefab, pos, Quaternion.Euler(0, 0, Random.Range(0f, 360f)));
-        s.GetComponent<SpriteRenderer>().color = myColor;
+        SpriteRenderer sr = s.GetComponent<SpriteRenderer>();
+        sr.color = myColor;
+        sr.sortingOrder = ++Bullet.stainOrderLayer;
         float r = Random.Range(minStainSize, maxStainSize);
         s.transform.localScale = new Vector3(r, r, r);
     }
