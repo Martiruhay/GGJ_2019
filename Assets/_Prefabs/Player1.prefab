@@ -14995,7 +14995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5733894139150281847
 Transform:
   m_ObjectHideFlags: 0
@@ -15226,7 +15226,7 @@ MonoBehaviour:
   bombSpawn: {fileID: 2642975172725582661}
   animAttack: {fileID: 3822550268345311569}
   animMove: {fileID: 2642975172725553022}
-  gunAnim: {fileID: 5733894139150281833}
+  gunAnim: {fileID: 0}
   ammo: {fileID: 1709898622}
   jumpPS: {fileID: 808239692}
   landPS: {fileID: 1533043059}
