@@ -93,8 +93,17 @@ public class Bullet : MonoBehaviour
         AudioManager.instance.Play("bullet_hit");
         // Particles
         GameObject g = Instantiate(splashParticles, transform.position, Quaternion.identity);
-        ParticleSystem.MainModule settings = g.GetComponent<ParticleSystem>().main;
-        settings.startColor = myColor;
+        //ParticleSystem.MainModule settings = g.GetComponent<ParticleSystem>().main;
+        //float H, S, V;
+        //Color.RGBToHSV(myColor, out H, out S, out V);
+        //settings.startColor = Random.ColorHSV(H, H, S, 0, V, V);
+
+        //ParticleSystem.MinMaxGradient grad = new ParticleSystem.MinMaxGradient(myColor, Color.white);
+        
+        //grad.mode = ParticleSystemGradientMode.RandomColor;
+        // then set this grad variable to some particle module
+        //settings.startColor = grad;
+
         g.transform.up = -rb.velocity.normalized;
 
         Destroy(gameObject);
