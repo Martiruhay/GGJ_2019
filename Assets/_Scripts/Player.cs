@@ -131,7 +131,7 @@ public class Player : MonoBehaviour
         // Jump
         if (jump && nJumps > 0 && !stuned)
         {
-            vel.y = nJumps == maxJumps ? jumpSpeed : jumpSpeed - jumpSpeed / 4;
+            vel.y = nJumps == maxJumps ? jumpSpeed : jumpSpeed * 0.75f;
             --nJumps;
             // Play jump sound
             AudioManager.instance.Play("jump_boi");
