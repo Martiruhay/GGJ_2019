@@ -97,7 +97,9 @@ public class Player : MonoBehaviour
     private void HandleMovement()
     {
         Vector2 vel = rb.velocity;
-        if (!stuned)
+        if (stuned)
+            vel.x = 0;
+        else
             vel.x = horizontal * moveSpeed;
 
         // Jump
@@ -156,7 +158,7 @@ public class Player : MonoBehaviour
     private void HandleShoot()
     {
         // Bullet
-        if (fire1 && bulletAmmo > 0 && canShoot)
+        if (fire1 && bulletAmmo > 0 && canShoot && !stuned)
         {
             // SHOOT
             --bulletAmmo;
@@ -173,7 +175,7 @@ public class Player : MonoBehaviour
         }
 
         // Bomb
-        if (fire2 && bombAmmo > 0 && canShoot)
+        if (fire2 && bombAmmo > 0 && canShoot && !stuned)
         {
             // SHOOT
             --bombAmmo;
@@ -197,7 +199,6 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(bombShootT);
         b.Shoot(velocity);
     }
-
 
 
     private IEnumerator BulletRefill()
