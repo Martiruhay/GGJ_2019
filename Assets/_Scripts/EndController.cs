@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class EndController : MonoBehaviour
 {
@@ -13,6 +14,13 @@ public class EndController : MonoBehaviour
 
     public string nextScene;
 
+    private void Update()
+    {
+        if (Input.anyKeyDown && Time.timeSinceLevelLoad > 2f)
+        {
+            SceneManager.LoadSceneAsync(nextScene);
+        }
+    }
     IEnumerator Start()
     {
         int winer = PlayerPrefs.GetInt("winer", 1);
@@ -47,7 +55,7 @@ public class EndController : MonoBehaviour
         for (int i = 0; i < texts.Length; i++)
         {
             texts[i].SetActive(true);
-            Text t = texts[i].GetComponent<Text>();
+            TextMeshProUGUI t = texts[i].GetComponent<TextMeshProUGUI>();
 
             t1 = 0; t2 = 2;
             while (t1 < t2)
