@@ -121,6 +121,7 @@ public class Bomb : MonoBehaviour
             {
                 p.HitBomb();
                 Explode();
+                InstantiateStain();
             }
         }
         else
