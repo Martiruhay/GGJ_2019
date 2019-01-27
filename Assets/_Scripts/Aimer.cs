@@ -15,6 +15,7 @@ public class Aimer : MonoBehaviour
 
     int d = 1;
     float t = 0;
+    public float triggers = 1;
 
     private void Awake()
     {
@@ -23,12 +24,12 @@ public class Aimer : MonoBehaviour
 
     void Start()
     {
-        speed = controller.aimerSpeed;
         t = Random.Range(minAngle, maxAngle);
     }
 
     void Update()
     {
+        speed = Mathf.Lerp(controller.aimerMinSpeed, controller.aimerMaxSpeed, triggers);
         t += speed * Time.deltaTime * d;
         if (t > maxAngle || t < minAngle)
             d *= -1;

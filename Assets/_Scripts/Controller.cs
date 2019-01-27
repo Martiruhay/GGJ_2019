@@ -8,7 +8,7 @@ public class Controller : MonoBehaviour
     [Header("Values")]
     public float bulletDamage, bombDamage;
     public float bulletStunDuration, bombStunDuration;
-    public float aimerSpeed;
+    public float aimerMinSpeed, aimerMaxSpeed;
     public float endGameTime;
     public int homeMaxHp;
 

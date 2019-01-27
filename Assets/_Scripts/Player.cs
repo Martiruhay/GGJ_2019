@@ -51,6 +51,7 @@ public class Player : MonoBehaviour
     private bool stuned;
     private float stunTimer;
     private bool canShoot = true;
+    private float triggers;
 
     private void Awake()
     {
@@ -75,6 +76,7 @@ public class Player : MonoBehaviour
         HandleInput();
         CheckFloor();
         HandleMovement();
+        HandleAimerSpeed();
         HandleShoot();
     }
 
@@ -84,6 +86,12 @@ public class Player : MonoBehaviour
         jump = Input.GetButtonDown("Jump_P" + playerNum.ToString());
         fire1 = Input.GetButtonDown("Fire1_P" + playerNum.ToString());
         fire2 = Input.GetButtonDown("Fire2_P" + playerNum.ToString());
+        triggers = Input.GetAxis("Triggers_P" + playerNum.ToString());
+    }
+
+    private void HandleAimerSpeed()
+    {
+        aimer.triggers = (triggers + 1) / 2;
     }
 
     private void HandleMovement()
@@ -220,7 +228,7 @@ public class Player : MonoBehaviour
         {
             stuned = false;
             stunObject.SetActive(false);
-            aimer.speed = controller.aimerSpeed;
+            aimer.speed = (controller.aimerMinSpeed + controller.aimerMaxSpeed) / 2;
             while (stunTimer > 0)
             {   // STUNED
                 stuned = true;
