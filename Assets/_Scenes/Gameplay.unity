@@ -484,7 +484,7 @@ GameObject:
   - component: {fileID: 191552589}
   - component: {fileID: 191552588}
   m_Layer: 0
-  m_Name: pixel
+  m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13309,7 +13309,7 @@ GameObject:
   - component: {fileID: 1076090222}
   - component: {fileID: 1076090221}
   m_Layer: 0
-  m_Name: pixel (1)
+  m_Name: Window
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

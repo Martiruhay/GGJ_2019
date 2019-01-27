@@ -14,7 +14,7 @@ public class Bomb : MonoBehaviour
     public GameObject splashParticles1, splashParticles2, splashAnim;
     public GameObject stainPrefab;
 
-    public float minStainSize, maxStainSize;
+    public float minStainSize, maxStainSize, areaOfEffect;
 
     private Collider2D col;
     private Color myColor;
@@ -76,7 +76,6 @@ public class Bomb : MonoBehaviour
 
     private void Explode()
     {
-        Debug.Log("BOUM!");
         // Bomb explosion sound
         AudioManager.instance.Play("explode_bomb");
 
@@ -89,54 +88,66 @@ public class Bomb : MonoBehaviour
         g.GetComponent<SpriteRenderer>().color = myColor;
 
         CameraShaker.Instance.ShakeOnce(mag, rough, fadeI, fadeO);
-
-        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Trigger enter: " + collision.gameObject.name);
-        if (collision.CompareTag("Bullet"))
+        bool found = false;
+        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, areaOfEffect);
+        foreach (Collider2D c in cols)
         {
-            Bullet b = collision.GetComponent<Bullet>();
-            if (b.id != id)
+            if (c.CompareTag("Bullet"))
             {
-                Explode();
+                BulletImpact(c);
+                found = true;
+            }
+            else if (c.CompareTag("Bomb"))
+            {
+                BombImpact(c);
+                found = true;
+            }
+            else if (c.CompareTag("Home"))
+            {
+                HomeImpact(c);
+                found = true;
+            }
+            else if (c.CompareTag("Player"))
+            {
+                PlayerImpact(c);
+                found = true;
             }
         }
-        else if (collision.CompareTag("Bomb"))
+        Explode();
+        InstantiateStain();
+        Destroy(gameObject);
+    }
+
+    private void PlayerImpact(Collider2D collision)
+    {
+        Player p = collision.GetComponent<Player>();
+        if (p.playerNum != id)
         {
-            Bomb b = collision.GetComponent<Bomb>();
-            if (b.id != id)
-            {
-                Explode();
-            }
+            p.HitBomb();
         }
-        else if (collision.CompareTag("Home"))
+    }
+
+    private void HomeImpact(Collider2D collision)
+    {
+        Home h = collision.GetComponent<Home>();
+        if (h.id != id)
         {
-            Home h = collision.GetComponent<Home>();
-            if (h.id != id)
-            {
-                h.HitBomb();
-                InstantiateStain();
-                Explode();
-            }
+            h.HitBomb();
         }
-        else if (collision.CompareTag("Player"))
-        {
-            Player p = collision.GetComponent<Player>();
-            if (p.playerNum != id)
-            {
-                p.HitBomb();
-                InstantiateStain();
-                Explode();
-            }
-        }
-        else
-        {
-            InstantiateStain();
-            Explode();
-        }
+    }
+
+    private void BombImpact(Collider2D collision)
+    {
+        Bomb b = collision.GetComponent<Bomb>();
+    }
+
+    private void BulletImpact(Collider2D collision)
+    {
+        Bullet b = collision.GetComponent<Bullet>();
     }
 
     private void OnBecameInvisible()
