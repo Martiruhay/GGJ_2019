@@ -7,9 +7,9 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Stun2
-  m_Shader: {fileID: 4800000, guid: 2926c92a9dc64b14386e85e71689038c, type: 3}
-  m_ShaderKeywords: ETC1_EXTERNAL_ALPHA
+  m_Name: RippleMat
+  m_Shader: {fileID: 4800000, guid: c2da940d7bc36c845bf79ea198b2140a, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -24,9 +24,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Angle: 130.25774
-    - _FadeIntensity: 1
-    - _Glow: 4.3
+    - _Amount: 3e-45
+    - _CenterX: 443.47247
+    - _CenterY: 352.60608
+    - _WaveAmount: 4.5
+    - _WaveSpeed: 20
+    - _XScroll: 0
+    - _YScroll: 0
     m_Colors:
-    - _Color: {r: 1, g: 0.96006787, b: 0.8820755, a: 1}
-    - _ColorG: {r: 1, g: 0.9154763, b: 0.25, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
