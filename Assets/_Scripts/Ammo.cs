@@ -12,6 +12,9 @@ public class Ammo : MonoBehaviour
 
     public Color show, hide;
 
+    private float alpha1 = 1.0f;
+    private float alpha2 = 0.7f;
+
     public void SetAmmo(int nBullets, int nBalloons)
     {
         // Bullets
@@ -21,10 +24,12 @@ public class Ammo : MonoBehaviour
             {
                 bullets[i].material.SetColor("_Color", myColor);
                 bullets[i].material.SetFloat("_Glow2", glowInt);
+                bullets[i].material.SetFloat("_Alpha", alpha1);
             }
             else{
                 bullets[i].material.SetColor("_Color", disableColor);
                 bullets[i].material.SetFloat("_Glow2", 1.0f);
+                bullets[i].material.SetFloat("_Alpha", alpha2);
             }
         }
 
@@ -35,10 +40,12 @@ public class Ammo : MonoBehaviour
             {
                 balloons[i].material.SetColor("_Color", myColor);
                 balloons[i].material.SetFloat("_Glow2", glowInt);
+                balloons[i].material.SetFloat("_Alpha", alpha1);
             }
             else{
                 balloons[i].material.SetColor("_Color", disableColor);
                 balloons[i].material.SetFloat("_Glow2", 1.0f);
+                balloons[i].material.SetFloat("_Alpha", alpha2);
             }
         }
     }
