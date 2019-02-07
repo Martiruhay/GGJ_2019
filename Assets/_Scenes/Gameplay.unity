@@ -5250,7 +5250,7 @@ ParticleSystem:
 --- !u!199 &210415084
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -11647,7 +11647,7 @@ ParticleSystem:
 --- !u!199 &696312610
 ParticleSystemRenderer:
   serializedVersion: 6
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -12432,14 +12432,14 @@ MonoBehaviour:
   aimerMinSpeed: 90
   aimerMaxSpeed: 360
   endGameTime: 0
-  homeMaxHp: 75
+  homeMaxHp: 100
   moveSpeed: 30
   jumpSpeed: 40
   maxJumps: 2
   fallMult: 1.25
   lowJumpMult: 1.5
   bulletSpeed: 80
-  bulletRefillTime: 1.75
+  bulletRefillTime: 1.25
   maxBulletAmmo: 5
   bulletAmmo: 5
   bombSpeed: 35
@@ -15580,38 +15580,6 @@ PrefabInstance:
       propertyPath: shootPS
       value: 
       objectReference: {fileID: 696312609}
-    - target: {fileID: 410250483, guid: 45c540102409de24f9967fc4156de30c, type: 3}
-      propertyPath: glowInt
-      value: 4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1096818265, guid: 45c540102409de24f9967fc4156de30c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 51c3027f0d9ce9b47b067823d587a8c2, type: 2}
-    - target: {fileID: 518124995, guid: 45c540102409de24f9967fc4156de30c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 51c3027f0d9ce9b47b067823d587a8c2, type: 2}
-    - target: {fileID: 611729415, guid: 45c540102409de24f9967fc4156de30c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 51c3027f0d9ce9b47b067823d587a8c2, type: 2}
-    - target: {fileID: 761053885, guid: 45c540102409de24f9967fc4156de30c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 51c3027f0d9ce9b47b067823d587a8c2, type: 2}
-    - target: {fileID: 437657721, guid: 45c540102409de24f9967fc4156de30c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 51c3027f0d9ce9b47b067823d587a8c2, type: 2}
-    - target: {fileID: 1570963160, guid: 45c540102409de24f9967fc4156de30c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 51c3027f0d9ce9b47b067823d587a8c2, type: 2}
-    - target: {fileID: 1535583520, guid: 45c540102409de24f9967fc4156de30c, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 51c3027f0d9ce9b47b067823d587a8c2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45c540102409de24f9967fc4156de30c, type: 3}
 --- !u!1 &1896918473 stripped
@@ -17405,38 +17373,6 @@ PrefabInstance:
       propertyPath: shootPS
       value: 
       objectReference: {fileID: 210415083}
-    - target: {fileID: 1709898622, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
-      propertyPath: glowInt
-      value: 4.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 211191813, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 48c563109c4c12844aea79cfb493e0d1, type: 2}
-    - target: {fileID: 481872434, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 48c563109c4c12844aea79cfb493e0d1, type: 2}
-    - target: {fileID: 611823872, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 48c563109c4c12844aea79cfb493e0d1, type: 2}
-    - target: {fileID: 890885083, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 48c563109c4c12844aea79cfb493e0d1, type: 2}
-    - target: {fileID: 990946453, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 48c563109c4c12844aea79cfb493e0d1, type: 2}
-    - target: {fileID: 1252393443, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 48c563109c4c12844aea79cfb493e0d1, type: 2}
-    - target: {fileID: 1875776842, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 48c563109c4c12844aea79cfb493e0d1, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd1b15ad2af830448aac313d191ff140, type: 3}
 --- !u!1 &5733894139760832954 stripped

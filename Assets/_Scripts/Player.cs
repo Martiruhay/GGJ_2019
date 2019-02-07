@@ -136,7 +136,7 @@ public class Player : MonoBehaviour
             // Play jump sound
             AudioManager.instance.Play("jump_boi");
 
-            jumpPS.Emit(nJumpParticles);
+            jumpPS.Emit(Random.Range(nJumpParticles / 2, nJumpParticles));
         }
         rb.velocity = vel;
 
@@ -177,7 +177,7 @@ public class Player : MonoBehaviour
     private void HandleLanding()
     {
         nJumps = maxJumps;
-        landPS.Emit(nJumpParticles);
+        landPS.Emit(Random.Range(nJumpParticles / 2, nJumpParticles));
         AudioManager.instance.Play("landing");
     }
 
