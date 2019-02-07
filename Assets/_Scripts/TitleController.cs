@@ -18,7 +18,7 @@ public class TitleController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Exit"))
             Application.Quit();
         else if (Input.anyKeyDown)
             SceneManager.LoadSceneAsync("Gameplay");

@@ -282,14 +282,14 @@ public class Player : MonoBehaviour
 
     public void HitBullet()
     {
-        stunTimer += controller.bulletStunDuration;
+        stunTimer = Mathf.Max(stunTimer, controller.bulletStunDuration);
         StopCoroutine(HitGlow());
         StartCoroutine(HitGlow());
     }
 
     public void HitBomb()
     {
-        stunTimer += controller.bombStunDuration;
+        stunTimer = Mathf.Max(stunTimer, controller.bombStunDuration);
         StopCoroutine(HitGlow());
         StartCoroutine(HitGlow());
     }

@@ -52,7 +52,7 @@ public class Controller : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Exit"))
             SceneManager.LoadSceneAsync("Title");
     }
 
